@@ -1,6 +1,17 @@
-body { font-family: Georgia, "Iowan Old Style", serif; line-height: 1.55; }
-h1 { font-size: 1.6em; line-height: 1.2; margin: 1.5em 0 0.3em; }
-p.meta { font-size: 0.8em; color: #777; margin-bottom: 2em; font-style: italic; }
-p.meta a { color: #777; }
-img { max-width: 100%; height: auto; }
-blockquote { margin: 1em 1.5em; font-style: italic; }
+@font-face { font-family: "EB Garamond"; font-style: normal; src: url("../fonts/EBGaramond.ttf"); }
+@font-face { font-family: "EB Garamond"; font-style: italic; src: url("../fonts/EBGaramond-Italic.ttf"); }
+body { font-family: "EB Garamond", Georgia, serif; font-size: 1.08em; line-height: 1.6; text-align: left; hyphens: none; }
+h1 { font-size: 1.6em; line-height: 1.2; margin: 1em 0 0.3em; page-break-before: always; }
+h2, h3, h4 { line-height: 1.25; margin: 1.6em 0 0.5em; page-break-after: avoid; }
+p { margin: 0 0 0.9em; }
+.meta p { font-size: 0.8em; color: #777; margin-bottom: 2em; font-style: italic; }
+.meta a { color: #777; }
+img { display: block; max-width: 100%; max-height: 60vh; height: auto; margin: 1.2em auto; }
+figure { margin: 1.2em 0; } figcaption { font-size: 0.85em; color: #666; text-align: center; }
+blockquote { margin: 1em 0 1em 1em; padding-left: 0.8em; border-left: 2px solid #ccc; font-style: italic; }
+ul, ol { margin: 0 0 1em 1.4em; padding: 0; } li { margin-bottom: 0.4em; }
+sup { font-size: 0.7em; line-height: 0; }
+hr { border: 0; border-top: 1px solid #ddd; margin: 2em 0; }
+.front h1 { page-break-before: auto; font-size: 2em; }
+.contents ol { margin: 1em 0 1em 1.6em; } .contents li { margin: 0 0 0.55em; }
+.contents a { text-decoration: none; color: inherit; }

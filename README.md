@@ -1,32 +1,43 @@
-# Sam Altman Essays
+# Sam Altman: The Essays
 
 [![build](https://github.com/nishachay/altman-essays/actions/workflows/build.yml/badge.svg)](https://github.com/nishachay/altman-essays/actions/workflows/build.yml)
 
-<img src="cover.jpg" alt="Sam Altman: The Essays" width="300" align="right">
+<img src="cover.jpg" alt="Sam Altman: The Essays" width="280" align="right">
 
-> "The days are long but the decades are short."
+Since 2013, Sam Altman has written about startups, ambition, and the arrival of AI. His best essays are as useful today as when he published them, but they are scattered among blog posts on other topics. This project collects them in one place, newest first, as a book you can read anywhere.
 
----
+**[EPUB]** · **[PDF]** · **[Markdown]**
 
-**Grab the [latest EPUB] from the [releases page]. It rebuilds itself every week.**
+- **EPUB** for Kindle, Kobo, Apple Books and phone reading apps
+- **PDF** for printing or reading on a laptop
+- **Markdown** if you want the plain text, one file per essay
 
-The best of [Sam Altman's blog] in one EPUB, for [AFK] reading on a Kindle, Kobo, Apple Books or your phone. Sixty-seven essays, about 70,000 words, from 2013 to 2026: *How To Be Successful*, *Productivity*, *The Days Are Long But The Decades Are Short*, *How to Hire*, *The Gentle Singularity*, *Startup Advice* and more, plus Richard Hamming's *You and Your Research*, which Sam reposted on his blog.
+All charts and images from the original posts are included.
 
-## Why curated
+<br clear="right">
 
-The blog has 121 posts, and not all of them are essays. This collection keeps the writing worth learning from and leaves out product launches, investment announcements, politics, COVID-era notes, market takes and personal news.
+## What's in it
+
+The essays that still hold up, including *How To Be Successful*, *Productivity*, *The Days Are Long But The Decades Are Short*, *How to Hire*, *Startup Advice* and *The Gentle Singularity*. It also includes *The Intelligence Age* and *Moore's Law for Everything*, which Sam published on their own sites rather than his blog.
+
+Looking for *Startup Playbook*? It isn't in the book, because its drawings and layout only work on the original site: [playbook.samaltman.com](https://playbook.samaltman.com/).
+
+## What's left out, and why
+
+His blog has more than a hundred posts, and many of them are not essays. Product launches, investment announcements, political posts, COVID-era notes, market takes and personal news are left out.
+
+Nothing is hidden:
 
 - [`posts.txt`](./posts.txt) lists every essay in the book
-- [`skipped.txt`](./skipped.txt) lists what was left out, so nothing is hidden
+- [`skipped.txt`](./skipped.txt) lists every post that was left out
 
-Think a post belongs (or doesn't)? Open a PR that moves its URL from one file to the other.
+If you think a post belongs in the book, or doesn't, open a pull request that moves its link from one file to the other.
 
-## How it works
+## When Sam publishes something new
 
-1. `build.py` fetches each essay in `posts.txt`, orders them newest first and builds the EPUB with [pandoc], with a table of contents.
-2. `make_cover.py` draws the cover over a painted dawn (`art/cover-art.jpg`).
-3. A GitHub Action rebuilds on every push and every Monday, and publishes to the `latest` release.
-4. When Sam publishes something new, `check_new.py` opens an issue. A human decides whether it goes in, so the book never fills up with announcements.
+Every Monday, a GitHub Action checks his blog. If there is a new post, it opens an issue, and a person decides whether it goes in. This keeps announcements out of the book.
+
+Every change to the list rebuilds the EPUB, PDF and Markdown automatically. The download links above always point to the latest version.
 
 ## Build it yourself
 
@@ -34,20 +45,22 @@ You need Python 3 and [pandoc].
 
 ```bash
 pip install -r requirements.txt
-python make_cover.py
-python build.py        # writes dist/altman.epub
+python make_cover.py   # draws cover.jpg
+python build.py        # writes the EPUB, PDF and Markdown to dist/
 ```
 
-To read on Kindle, send the EPUB through [Send to Kindle].
+To read on a Kindle, send the EPUB with [Send to Kindle].
 
----
+## Credits
 
-_All essays are © Sam Altman and link back to the originals. This project only collects publicly posted writing for easier reading. Inspired by [ofou/graham-essays]. Ideas, fixes and feedback are welcome as issues or PRs._
+All writing © Sam Altman. Every essay links to the original. The cover art is from his essay [The Intelligence Age]. This project only collects writing he has published publicly, to make it easier to read.
 
-[latest EPUB]: https://github.com/nishachay/altman-essays/releases/download/latest/altman.epub
-[releases page]: https://github.com/nishachay/altman-essays/releases
-[Sam Altman's blog]: https://blog.samaltman.com
-[AFK]: https://www.grammarly.com/blog/afk-meaning/
+Inspired by [ofou/graham-essays], which does the same for Paul Graham.
+
+[EPUB]: https://github.com/nishachay/altman-essays/releases/download/latest/altman.epub
+[PDF]: https://github.com/nishachay/altman-essays/releases/download/latest/altman.pdf
+[Markdown]: https://github.com/nishachay/altman-essays/releases/download/latest/altman-markdown.zip
 [pandoc]: https://pandoc.org/installing.html
 [Send to Kindle]: https://www.amazon.com/sendtokindle
+[The Intelligence Age]: https://ia.samaltman.com/
 [ofou/graham-essays]: https://github.com/ofou/graham-essays
