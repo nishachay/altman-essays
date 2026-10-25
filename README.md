@@ -2,7 +2,7 @@
 
 [![build](https://github.com/nishachay/altman-essays/actions/workflows/build.yml/badge.svg)](https://github.com/nishachay/altman-essays/actions/workflows/build.yml)
 
-<img src="cover.png" alt="Sam Altman: The Essays" width="300" align="right">
+<img src="cover.jpg" alt="Sam Altman: The Essays" width="300" align="right">
 
 > "The days are long but the decades are short."
 
@@ -10,7 +10,7 @@
 
 **Grab the [latest EPUB] from the [releases page]. It rebuilds itself every week.**
 
-The best of [Sam Altman's blog] in one EPUB, for [AFK] reading on a Kindle, Kobo, Apple Books or your phone. Sixty-one essays, about 63,000 words, from 2013 to 2026: *How To Be Successful*, *Productivity*, *The Days Are Long But The Decades Are Short*, *How to Hire*, *The Gentle Singularity*, *Startup Advice* and more, plus Richard Hamming's *You and Your Research*, which Sam reposted on his blog.
+The best of [Sam Altman's blog] in one EPUB, for [AFK] reading on a Kindle, Kobo, Apple Books or your phone. Sixty-seven essays, about 70,000 words, from 2013 to 2026: *How To Be Successful*, *Productivity*, *The Days Are Long But The Decades Are Short*, *How to Hire*, *The Gentle Singularity*, *Startup Advice* and more, plus Richard Hamming's *You and Your Research*, which Sam reposted on his blog.
 
 ## Why curated
 
@@ -24,7 +24,7 @@ Think a post belongs (or doesn't)? Open a PR that moves its URL from one file to
 ## How it works
 
 1. `build.py` fetches each essay in `posts.txt`, orders them newest first and builds the EPUB with [pandoc], with a table of contents.
-2. `make_cover.py` draws the cover.
+2. `make_cover.py` draws the cover over a painted dawn (`art/cover-art.jpg`).
 3. A GitHub Action rebuilds on every push and every Monday, and publishes to the `latest` release.
 4. When Sam publishes something new, `check_new.py` opens an issue. A human decides whether it goes in, so the book never fills up with announcements.
 
