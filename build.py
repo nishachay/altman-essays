@@ -21,5 +21,5 @@ html.append('</body></html>')
 pathlib.Path('dist').mkdir(exist_ok=True)
 open('dist/altman.html','w').write('\n'.join(html))
 subprocess.run(['pandoc','dist/altman.html','-o','dist/altman.epub','--toc','--toc-depth=1',
-  '--metadata','title=Sam Altman Essays','--metadata','author=Sam Altman','--metadata','lang=en'],check=True)
+  '--metadata','title=Sam Altman Essays','--metadata','author=Sam Altman','--metadata','lang=en','--epub-cover-image=cover.png'],check=True)
 print(f'built {len(posts)} essays')
