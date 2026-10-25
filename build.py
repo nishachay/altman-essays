@@ -16,10 +16,10 @@ posts.sort(key=lambda p:p[0], reverse=True)
 html=['<html><head><meta charset="utf-8"><title>Sam Altman Essays</title></head><body>']
 for ts,title,u,body in posts:
     date=datetime.datetime.fromtimestamp(ts,datetime.UTC).strftime('%B %Y') if ts else ''
-    html.append(f'<h1>{title}</h1><p><em>{date} · <a href="{u}">{u}</a></em></p>{body}')
+    html.append(f'<h1>{title}</h1><p class="meta">{date} · <a href="{u}">Read the original</a></p>{body}')
 html.append('</body></html>')
 pathlib.Path('dist').mkdir(exist_ok=True)
 open('dist/altman.html','w').write('\n'.join(html))
 subprocess.run(['pandoc','dist/altman.html','-o','dist/altman.epub','--toc','--toc-depth=1',
-  '--metadata','title=Sam Altman Essays','--metadata','author=Sam Altman','--metadata','lang=en','--epub-cover-image=cover.png'],check=True)
+  '--metadata','title=Sam Altman Essays','--metadata','author=Sam Altman','--metadata','lang=en','--epub-cover-image=cover.jpg','--css=epub.css'],check=True)
 print(f'built {len(posts)} essays')
