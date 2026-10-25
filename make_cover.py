@@ -35,7 +35,24 @@ def base():
     # very gentle lift of the upper sky only, so navy type sits on even tone
     return Image.composite(Image.new('RGB',(W,H),CREAM),img,vramp(700,0,90,1.2))
 
+def panel():
+    # painting on top, fading into a cream panel that holds the title
+    src=Image.open(A('ia-painting.png')).convert('RGB')
+    img=src.resize((W,round(src.height*W/src.width)),Image.LANCZOS)
+    off=440; img=img.crop((0,off,W,off+H))
+    img=img.filter(ImageFilter.UnsharpMask(1.6,45,2))
+    paper=Image.new('RGB',(W,H),CREAM)
+    img=Image.composite(paper,img,vramp(330,0,150,1.0))      # calm the strip of sky behind the author
+    m=vramp(1720,1980,255,1.6); ImageDraw.Draw(m).rectangle((0,1980,W,H),fill=255)
+    return Image.composite(paper,img,m)
+
 def build(style):
+    if style=='panel':
+        img=panel(); d=ImageDraw.Draw(img)
+        center(d,'SAM ALTMAN',font('Inter',64,650,32),130,INK,track=22)
+        center(d,'The Essays',font('EBGaramond',250,500),2010,INK)
+        center(d,'On startups, ambition, and the future',font('EBGaramond-Italic',66,450),2330,(44,52,82))
+        return img
     img=base()
     title=font('EBGaramond',250,500); author=font('Inter',62,600,32)
     if style=='split':
@@ -55,7 +72,7 @@ def build(style):
     return img
 
 if __name__=='__main__':
-    s=sys.argv[1] if len(sys.argv)>1 else 'sky'
+    s=sys.argv[1] if len(sys.argv)>1 else 'panel'
     if s=='all':
         for k in ['sky','split','subtitle']: build(k).save(A(f'v_{k}.jpg'),quality=92)
     else:
