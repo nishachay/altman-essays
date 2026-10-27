@@ -3,6 +3,8 @@ import requests, datetime, subprocess, re, pathlib, json, zipfile, html as H
 from bs4 import BeautifulSoup
 from concurrent.futures import ThreadPoolExecutor
 S=requests.Session(); S.headers['User-Agent']='altman-essays (github.com/nishachay/altman-essays)'
+from requests.adapters import HTTPAdapter; from urllib3.util.retry import Retry
+S.mount('https://',HTTPAdapter(max_retries=Retry(total=5,connect=5,read=5,backoff_factor=2,status_forcelist=[429,500,502,503,504],allowed_methods=['GET'])))  # retry slow/flaky pages instead of failing the build
 urls=[l.strip() for l in open('posts.txt') if l.strip() and not l.startswith('#')]
 def generic(s):
     """Body of a standalone essay site: climb from the h1 to the block holding most of the text."""
