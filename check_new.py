@@ -2,6 +2,8 @@
 import os, requests, json, subprocess
 from bs4 import BeautifulSoup
 S=requests.Session(); S.headers['User-Agent']='altman-essays (github.com/nishachay/altman-essays)'
+from requests.adapters import HTTPAdapter; from urllib3.util.retry import Retry
+S.mount('https://',HTTPAdapter(max_retries=Retry(total=5,connect=5,read=5,backoff_factor=2,status_forcelist=[429,500,502,503,504],allowed_methods=['GET'])))  # retry slow/flaky pages instead of failing the build
 known=set()
 for f in ('posts.txt','skipped.txt'):
     known|={l.strip() for l in open(f) if l.strip() and not l.startswith('#')}
